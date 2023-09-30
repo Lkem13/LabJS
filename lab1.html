@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab1</title>
+    </head>
+    <body>
+        <input type="text" id="First" name="First"><br><br>
+        <input type="text" id="Second"><br><br>
+        <input type="text" id="Third"><br><br>
+        <input type="text" id="Fourth"><br><br>
+        <button type="button" onclick="wylicz()">Przelicz</button><br><br>
+        <div id ="wynik">
+            Suma <input type="text" id="sum" readonly="readonly"><br><br>
+            Min <input type="text" id="min" readonly="readonly"><br><br>
+            Max <input type="text" id="max" readonly="readonly"><br><br>
+            Srednia <input type="text" id="avg" readonly="readonly">
+        </div>
+        <script type="text/javascript">
+            let test = document.getElementById("First").value;
+
+            function wylicz(){
+                let first = parseInt(document.getElementById("First").value);
+                let second = parseInt(document.getElementById("Second").value);
+                let third = parseInt(document.getElementById("Third").value);
+                let fourth = parseInt(document.getElementById("Fourth").value);
+                
+                let min = first, max = first, avg = 0, sum = 0;
+                let numbers = [first, second, third, fourth];
+                
+                for(let i = 0; i < numbers.length; i++)
+                {
+                    sum += numbers[i];
+
+                    if(min > numbers[i]){
+                        min = numbers[i];
+                    }
+
+                    if(max < numbers[i]){
+                        max = numbers[i];
+                    }
+                    
+                    avg = sum/numbers.length;
+                }
+
+                document.getElementById("sum").value = sum;
+                document.getElementById("min").value = min;
+                document.getElementById("max").value = max;
+                document.getElementById("avg").value = avg;
+            }
+        </script>
+    </body>
 </html>
