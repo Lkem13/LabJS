@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
+    <div id="slider">
+        <div class="slideshow">
+            <div class="slides">
+                <img src="http://picsum.photos/seed/picsum/600/400" alt="Image 1">
+            </div>
+            <div class="slides">
+                <img src="http://picsum.photos/seed/pic2/600/400" alt="Image 2">
+            </div>
+            <div class="slides">
+                <img src="http://picsum.photos/seed/pic4/600/400" alt="Image 3">
+            </div>
+        </div>
+    </div>
+    
+
+    <button class="prev" onclick="manageSlide(-1)">Previous</button>
+    <button class="next" onclick="manageSlide(1)">Next</button>
+
+    <main></main>
+    <script src="main.js"></script>
+</body>
+</html>
