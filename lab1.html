@@ -6,49 +6,71 @@
         <title>Lab1</title>
     </head>
     <body>
-        <input type="text" id="First" name="First"><br><br>
-        <input type="text" id="Second"><br><br>
-        <input type="text" id="Third"><br><br>
-        <input type="text" id="Fourth"><br><br>
-        <button type="button" onclick="wylicz()">Przelicz</button><br><br>
-        <div id ="wynik">
-            Suma <input type="text" id="sum" readonly="readonly"><br><br>
-            Min <input type="text" id="min" readonly="readonly"><br><br>
-            Max <input type="text" id="max" readonly="readonly"><br><br>
-            Srednia <input type="text" id="avg" readonly="readonly">
+        <div id="inputs">
+            <input type="number" class="dynamicInput">
+            <input type="number" class="dynamicInput">
+            <input type="number" class="dynamicInput"><br><br>
+        </div>
+        <button type="button" onclick="addInput()">Dodaj pole</button>
+        <button type="button" onclick="removeInput()">Usuń pole</button><br><br>
+        <button type="button" onclick="count()">Przelicz</button><br><br>
+    
+        <div id ="summary">
+            Suma <input type="number" id="sum" readonly="readonly"><br><br>
+            Min <input type="number" id="min" readonly="readonly"><br><br>
+            Max <input type="number" id="max" readonly="readonly"><br><br>
+            Srednia <input type="number" id="avg" readonly="readonly">
         </div>
         <script type="text/javascript">
-            let test = document.getElementById("First").value;
 
-            function wylicz(){
-                let first = parseInt(document.getElementById("First").value);
-                let second = parseInt(document.getElementById("Second").value);
-                let third = parseInt(document.getElementById("Third").value);
-                let fourth = parseInt(document.getElementById("Fourth").value);
-                
-                let min = first, max = first, avg = 0, sum = 0;
-                let numbers = [first, second, third, fourth];
-                
-                for(let i = 0; i < numbers.length; i++)
-                {
-                    sum += numbers[i];
-
-                    if(min > numbers[i]){
-                        min = numbers[i];
-                    }
-
-                    if(max < numbers[i]){
-                        max = numbers[i];
-                    }
-                    
-                    avg = sum/numbers.length;
-                }
-
-                document.getElementById("sum").value = sum;
-                document.getElementById("min").value = min;
-                document.getElementById("max").value = max;
-                document.getElementById("avg").value = avg;
+            function addInput() {
+                const inputFields = document.getElementById("inputs");
+                const newInput = document.createElement("input");
+                newInput.type = "text";
+                newInput.classList.add("dynamicInput");
+                inputFields.appendChild(newInput);
+                addInputListeners();
             }
+
+            function removeInput() {
+                const inputFields = document.getElementById("inputs");
+                const dynamicInputs = document.getElementsByClassName("dynamicInput");
+                if (dynamicInputs.length > 0) {
+                    inputFields.removeChild(dynamicInputs[dynamicInputs.length - 1]);
+                    addInputListeners();
+                }
+            }
+
+            function addInputListeners() {
+                const dynamicInputs = document.getElementsByClassName("dynamicInput");
+                for (let i = 0; i < dynamicInputs.length; i++) {
+                    dynamicInputs[i].addEventListener("input", count);
+                }
+            }
+
+            function count() {
+            const dynamicInputs = document.getElementsByClassName("dynamicInput");
+            let numbers = [];
+
+            for (let i = 0; i < dynamicInputs.length; i++) {
+                let value = parseInt(dynamicInputs[i].value) || 0;
+                numbers.push(value);
+            }
+
+            let min = Math.min(...numbers);
+            let max = Math.max(...numbers);
+            let sum = numbers.reduce((acc, val) => acc + val, 0);
+            let avg = sum / numbers.length;
+
+            document.getElementById("sum").value = sum;
+            document.getElementById("min").value = min;
+            document.getElementById("max").value = max;
+            document.getElementById("avg").value = avg;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            addInputListeners();
+        });
         </script>
     </body>
 </html>
