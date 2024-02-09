@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pogodynka</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Pogodynka</h1>
+        
+        <div id="add-location-container">
+            <input type="text" id="location-input" placeholder="Provide the location">
+            <button class="submit" onclick="addLocation()">Add Location</button>
+            <button class="submit" onclick="clearLocalStorage()">Clear localStorage</button>
+        </div><br/>
+        <div id="locations-container">
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
