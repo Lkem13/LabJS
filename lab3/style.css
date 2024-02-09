@@ -1,3 +1,42 @@
-button{
-    width: 100px;
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button {
+    margin: 5px;
+}
+
+.channel {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+audio {
+    width: 100%;
+}
+
+/* Additional styling, adjust as needed */
+#channel1 {
+    background-color: #ffe4e1;
+}
+
+#channel2 {
+    background-color: #add8e6;
+}
+
+#channel3 {
+    background-color: #98fb98;
+}
+
+#channel4 {
+    background-color: #f0e68c;
 }
