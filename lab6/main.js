@@ -74,7 +74,7 @@ function draw() {
         for (let j = i + 1; j < balls.length; j++) {
             const distance = Math.hypot(balls[i].x - balls[j].x, balls[i].y - balls[j].y);
 
-            if (distance < minDistance) {
+            if (distance <= minDistance) {
                 drawLine(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
             }
         }
@@ -99,6 +99,10 @@ function toggleAnimation() {
 function resetBalls() {
     for (let i = 0; i < balls.length; i++) {
         balls[i].reset();
+        if(!animationId){
+            draw();
+            toggleButton.textContent = 'Stop Animation';
+        }
     }
 }
 
